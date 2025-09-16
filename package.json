@@ -22,7 +22,7 @@
     "lua"
   ],
   "engines": {
-    "vscode": "^1.60.0"
+    "vscode": "^1.89.0"
   },
   "categories": [
     "Other"
@@ -31,33 +31,7 @@
     "onDebugResolve:xmake",
     "onDebugDynamicConfigurations:xmake",
     "workspaceContains:xmake.lua",
-    "onCommand:xmake.onCreateProject",
-    "onCommand:xmake.onNewFiles",
-    "onCommand:xmake.onForceConfigure",
-    "onCommand:xmake.onCleanConfigure",
-    "onCommand:xmake.onBuild",
-    "onCommand:xmake.onBuildAll",
-    "onCommand:xmake.onRebuild",
-    "onCommand:xmake.onClean",
-    "onCommand:xmake.onCleanAll",
-    "onCommand:xmake.onBuildRun",
-    "onCommand:xmake.onRun",
-    "onCommand:xmake.onPackage",
-    "onCommand:xmake.onInstall",
-    "onCommand:xmake.onUninstall",
-    "onCommand:xmake.onDebug",
-    "onCommand:xmake.onLaunchDebug",
-    "onCommand:xmake.onMacroBegin",
-    "onCommand:xmake.onMacroEnd",
-    "onCommand:xmake.onMacroRun",
-    "onCommand:xmake.onRunLastCommand",
-    "onCommand:xmake.onUpdateIntellisense",
-    "onCommand:xmake.setProjectRoot",
-    "onCommand:xmake.setTargetPlat",
-    "onCommand:xmake.setTargetArch",
-    "onCommand:xmake.setBuildMode",
-    "onCommand:xmake.setDefaultTarget",
-    "onCommand:xmake.setTargetToolchain"
+    "onCommand:xmake.setProjectRoot"
   ],
   "main": "./out/src/extension",
   "contributes": {
@@ -313,6 +287,26 @@
         "category": "XMake",
         "enablement": "view == xmakeOptions",
         "icon": "$(gear)"
+      },
+      {
+        "command": "xmake.startLanguageServer",
+        "title": "Start Language Server",
+        "category": "XMake"
+      },
+      {
+        "command": "xmake.stopLanguageServer",
+        "title": "Stop Language Server",
+        "category": "XMake"
+      },
+      {
+        "command": "xmake.restartLanguageServer",
+        "title": "Restart Language Server",
+        "category": "XMake"
+      },
+      {
+        "command": "xmake.languageServerStatus",
+        "title": "Language Server Status",
+        "category": "XMake"
       }
     ],
     "menus": {
@@ -775,12 +769,14 @@
     "test": "npm run compile"
   },
   "dependencies": {
-    "encoding": "^0.1.13"
+    "encoding": "^0.1.13",
+    "vscode-languageclient": "^9.0.1",
+    "vscode-languageserver": "^9.0.1"
   },
   "devDependencies": {
     "@types/node": "^16.10.4",
-    "@types/vscode": "^1.58.0",
+    "@types/vscode": "^1.70.0",
     "typescript": "^4.4.3",
-    "vsce": "^2.11.0"
+    "vsce": "^2.15.0"
   }
 }

@@ -102,6 +102,7 @@ function getXMakeCommandsSuggestions(word: string): Thenable<vscode.CompletionIt
     return getSuggestions(cmd, word, vscode.CompletionItemKind.Function, insertXMakeCommandText, wordContains);
 }
 
+// @deprecated
 // the option class
 export class Completion implements vscode.CompletionItemProvider {
 

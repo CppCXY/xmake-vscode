@@ -8,6 +8,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { XMake } from './xmake';
 import { config } from './config';
+import { XMakeLanguageServer, registerLanguageServerCommands } from './langaugeServer';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -19,6 +20,13 @@ export async function activate(context: vscode.ExtensionContext) {
     // init xmake plugin
     const xmake = new XMake(context);
     context.subscriptions.push(xmake);
+
+    // init xmake language server
+    const languageServer = new XMakeLanguageServer(context);
+    context.subscriptions.push(languageServer);
+
+    // register language server commands
+    registerLanguageServerCommands(context, languageServer);
 
     // register all commands of the xmake plugin
     function register(name, fn) {
@@ -104,6 +112,13 @@ export async function activate(context: vscode.ExtensionContext) {
 
     // start xmake plugin
     await xmake.start();
+
+    // start language server
+    try {
+        await languageServer.start();
+    } catch (error) {
+        console.error('Failed to start XMake Language Server:', error);
+    }
 }
 
 // this method is called when your extension is deactivated

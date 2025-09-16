@@ -378,7 +378,7 @@ export class XMake implements vscode.Disposable {
         }
 
         // init languages
-        vscode.languages.registerCompletionItemProvider("xmake", new Completion());
+        // vscode.languages.registerCompletionItemProvider("xmake", new Completion());
 
         // register xmake task provider
         this._xmakeTaskProvider = vscode.tasks.registerTaskProvider(XmakeTaskProvider.XmakeType, new XmakeTaskProvider(utils.getProjectRoot()));
